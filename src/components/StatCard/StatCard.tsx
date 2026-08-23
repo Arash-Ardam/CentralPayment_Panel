@@ -13,15 +13,13 @@ const StatCard = ({ title, value, changePercent }: StatCardProps) => {
         <h3 className={styles.title}>{title}</h3>
         <p className={styles.value}>{value.toLocaleString("fa-IR")} ریال</p>
       </div>
-      <p className={styles.trend}>
-        نمودار رشد :
-        <div>
-          <p>{changePercent.toLocaleString("fa-IR")} %</p>
-          {changePercent > 0 && <span className={styles.upTrend}>↑</span>}
-          {changePercent < 0 && <span className={styles.downTrend}>↓</span>}
-          {changePercent === 0 && <span>---</span>}
-        </div>
-      </p>
+      <div className={styles.trendStats}>
+        <p className={styles.trend}>نمودار رشد :</p>
+        <span>{Math.abs(changePercent).toLocaleString("fa-IR")}٪</span>
+        {changePercent > 0 && <span className={styles.upTrend}>↑</span>}
+        {changePercent < 0 && <span className={styles.downTrend}>↓</span>}
+        {changePercent === 0 && <span>---</span>}
+      </div>
     </div>
   );
 };

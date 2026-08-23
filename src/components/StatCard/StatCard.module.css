@@ -3,14 +3,10 @@
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     display: flex;
-    padding: 0 1.5rem;
+    padding:  1rem;
     align-items: center;
     gap: var(--space-6);
-}
-
-.statCardStyle h3{
-    font-size: small;
-    color: var(--color-muted);
+    justify-content:space-between;
 }
 
 .value { font-size: 1.5rem; font-weight: 700; display: flex; gap: var(--space-2); }
@@ -24,7 +20,7 @@
     gap:  var(--space-2);
 }
 
-.trend div{
+.trendStats{
     display: flex;
     align-items: center;
     gap:  var(--space-2);
