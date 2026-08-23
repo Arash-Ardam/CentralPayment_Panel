@@ -11,17 +11,12 @@
 
 .value { font-size: 1.5rem; font-weight: 700; display: flex; gap: var(--space-2); }
 .title { font-size: 0.875rem; color: var(--color-muted); }
-.trend{
-    font-size: medium;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    color: var(--color-text);
-    gap:  var(--space-2);
-}
+.trend { font-size: 0.875rem; font-weight: 400; color: var(--color-muted); }
 
 .trendStats{
     display: flex;
+    font-size: medium;
+    font-weight: bold;
     align-items: center;
     gap:  var(--space-2);
 }
