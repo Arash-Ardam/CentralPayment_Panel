@@ -1,0 +1,21 @@
+.statCardStyle{
+    background-color: white;
+    border-radius: 5px;
+}
+
+.statCardStyle h1{
+    font-size: small;
+}
+
+.statCardStyle p{
+    font-size: larger;
+    font-weight: bold;
+}
+
+.upTrend{
+    color: green;
+}
+
+.downTrend{
+    color: red;
+}
