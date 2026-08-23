@@ -1,12 +1,11 @@
 .statCardStyle{
-    background-color: white;
-    border-radius: 5px;
+    background-color: var(--color-surface);
+    border-radius: var(--radius);
     box-shadow: var(--shadow);
-    display: grid;
+    display: flex;
     padding: 0 1.5rem;
-    grid-template-columns: repeat(3, 1fr);
     align-items: center;
-    gap: var(--space-2);
+    gap: var(--space-6);
 }
 
 .statCardStyle h3{
@@ -14,11 +13,21 @@
     color: var(--color-muted);
 }
 
-.statCardStyle p{
-    font-size: larger;
-    font-weight: 700;
+.value { font-size: 1.5rem; font-weight: 700; display: flex; gap: var(--space-2); }
+.title { font-size: 0.875rem; color: var(--color-muted); }
+.trend{
+    font-size: medium;
+    font-weight: bold;
     display: flex;
-    gap: var(--space-2);
+    align-items: center;
+    color: var(--color-text);
+    gap:  var(--space-2);
+}
+
+.trend div{
+    display: flex;
+    align-items: center;
+    gap:  var(--space-2);
 }
 
 .upTrend{

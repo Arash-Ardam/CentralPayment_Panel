@@ -3,18 +3,24 @@ import styles from "./StatCard.module.css";
 type StatCardProps = {
   title: string;
   value: number;
-  trend?: "up" | "down";
+  changePercent: number;
 };
 
-const StatCard = ({ title, value, trend }: StatCardProps) => {
+const StatCard = ({ title, value, changePercent }: StatCardProps) => {
   return (
     <div className={styles.statCardStyle}>
-      <h3>{title}</h3>
-      <p>{value.toLocaleString("fa-IR")} ریال</p>
-      <p>
+      <div>
+        <h3 className={styles.title}>{title}</h3>
+        <p className={styles.value}>{value.toLocaleString("fa-IR")} ریال</p>
+      </div>
+      <p className={styles.trend}>
         نمودار رشد :
-        {trend === "up" && <span className={styles.upTrend}>↑</span>}
-        {trend === "down" && <span className={styles.downTrend}>↓</span>}
+        <div>
+          <p>{changePercent.toLocaleString("fa-IR")} %</p>
+          {changePercent > 0 && <span className={styles.upTrend}>↑</span>}
+          {changePercent < 0 && <span className={styles.downTrend}>↓</span>}
+          {changePercent === 0 && <span>---</span>}
+        </div>
       </p>
     </div>
   );
