@@ -1,21 +1,30 @@
 .statCardStyle{
     background-color: white;
     border-radius: 5px;
+    box-shadow: var(--shadow);
+    display: grid;
+    padding: 0 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    gap: var(--space-2);
 }
 
-.statCardStyle h1{
+.statCardStyle h3{
     font-size: small;
+    color: var(--color-muted);
 }
 
 .statCardStyle p{
     font-size: larger;
-    font-weight: bold;
+    font-weight: 700;
+    display: flex;
+    gap: var(--space-2);
 }
 
 .upTrend{
-    color: green;
+    color: var(--color-up);
 }
 
 .downTrend{
-    color: red;
+    color: var(--color-down);
 }
