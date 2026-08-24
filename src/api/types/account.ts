@@ -11,18 +11,28 @@ export type Account = {
 }
 
 export type SingleSettings = {
- Status :boolean,  
- TerminalId :string,
- MerchantId :string,
- Username :string,
- Password :string,
- ExpireDate : string 
+ status :boolean,  
+ terminalId :string,
+ merchantId :string,
+ username :string,
+ password :string,
+ expireDate : string 
 }
 
 export type BatchSettings = {
- Status : boolean,
- MaxTransactionsCount: number ,
- MaxDailyAmount: number,
- MinSatnaAmount: number ,
- ExpireDate: string 
+ status : boolean,
+ maxTransactionsCount: number ,
+ maxDailyAmount: number,
+ minSatnaAmount: number ,
+ expireDate: string 
 }
+
+
+
+export type CreateAccountRequest = {
+  bankId: string;
+  customerId: string;
+  accountnumber: string;  
+  iban: string;
+  expireDate: string;
+};

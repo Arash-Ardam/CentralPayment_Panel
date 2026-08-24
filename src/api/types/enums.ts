@@ -1,12 +1,12 @@
-export type BankCode = "None" | "Saman" | "Tejarat" ;
+export type BankCode = "none" | "saman" | "tejarat" ;
 
-export type ServiceTypes = "None" | "Single" | "Grouped";
+export type ServiceTypes = "none" | "single" | "grouped";
 
-export type OrderStatus = "None" | "Drafted" | "Submited" | "Canceled" | "Pending" | "Done" | "Rejected";
+export type OrderStatus = "none" | "drafted" | "submited" | "canceled" | "pending" | "done" | "rejected";
 
-export type PaymentType = "None" | "Single" | "Grouped";
+export type PaymentType = "none" | "single" | "grouped";
 
-export type TransactionType = "None" | "Internal" | "Paya" | "Satna" | "PSP";
+export type TransactionType = "none" | "internal" | "paya" | "satna" | "psp";
 
-export type GroupedTransactionStatus = "None" | "Drafted" | "Pending" | "WaitForProvider" |
-                                       "Succeded" | "Failed" | "Canceled" | "RolledBack" | "Rejected" 
+export type groupedTransactionStatus = "none" | "drafted" | "pending" | "waitForProvider" |
+                                       "succeded" | "failed" | "canceled" | "rolledBack" | "rejected" 
