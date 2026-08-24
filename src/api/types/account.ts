@@ -7,7 +7,7 @@ export type Account = {
     customerName:string,
     bankName : string,
     singleService : SingleSettings | null,
-    bantchService : BatchSettings | null
+    batchService : BatchSettings | null
 }
 
 export type SingleSettings = {

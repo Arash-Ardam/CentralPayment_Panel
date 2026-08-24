@@ -8,5 +8,5 @@ export type PaymentType = "none" | "single" | "grouped";
 
 export type TransactionType = "none" | "internal" | "paya" | "satna" | "psp";
 
-export type groupedTransactionStatus = "none" | "drafted" | "pending" | "waitForProvider" |
+export type GroupedTransactionStatus = "none" | "drafted" | "pending" | "waitForProvider" |
                                        "succeded" | "failed" | "canceled" | "rolledBack" | "rejected" 
