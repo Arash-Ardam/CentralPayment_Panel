@@ -21,7 +21,7 @@ export async function apiRequest<T>(
   const { method = "GET", token , body, idempotencyKey } = options;
 
   const headers: Record<string, string> = {};
-  if(token !== undefined) headers["Authorization"] = `bearer ${token}`;
+  if(token !== null) headers["Authorization"] = `bearer ${token}`;
   if (body !== undefined) headers["Content-Type"] = "application/json";
   if (idempotencyKey) headers["Idempotency-Key"] = idempotencyKey;
 

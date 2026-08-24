@@ -3,10 +3,7 @@ import styles from "./App.module.css";
 import AppShell from "./components/AppShell/AppShell";
 import { customerApi } from "./api/endpoints";
 import { useAuth } from "react-oidc-context";
-import { useState } from "react";
 const App = () => {
-  const [token, setToken] = useState("");
-
   const auth = useAuth();
 
   if (auth.isLoading) return <p>در حال بارگذاری…</p>;
@@ -30,9 +27,10 @@ const App = () => {
 
           <button
             onClick={async () => {
-              setToken(auth.user?.access_token ?? "");
               try {
-                const data = await customerApi.getAll(token);
+                const data = await customerApi.getAll(
+                  auth.user?.access_token ?? "",
+                );
                 console.log("موفق", data);
               } catch (error) {
                 console.log("نا موفق", error);
