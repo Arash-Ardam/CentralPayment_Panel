@@ -9,6 +9,7 @@ export class ApiError extends Error {
 
 type RequestOptions = {
   method?: "GET" | "POST" | "PUT" | "DELETE";
+  token?: string | null;
   body?: unknown;
   idempotencyKey?: string;
 };
@@ -17,9 +18,10 @@ export async function apiRequest<T>(
   path: string,
   options: RequestOptions = {}
 ): Promise<T> {
-  const { method = "GET", body, idempotencyKey } = options;
+  const { method = "GET", token , body, idempotencyKey } = options;
 
   const headers: Record<string, string> = {};
+  if(token !== undefined) headers["Authorization"] = `bearer ${token}`;
   if (body !== undefined) headers["Content-Type"] = "application/json";
   if (idempotencyKey) headers["Idempotency-Key"] = idempotencyKey;
 

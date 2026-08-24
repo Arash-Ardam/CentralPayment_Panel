@@ -54,3 +54,27 @@
     grid-area: main;
     padding: var(--space-6);
 }
+
+
+.header button {
+  background-color: white;
+  color: red;
+  font-weight: bold;
+  font-size: large;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  padding: 1rem;
+  width: auto;
+  height:1px;
+  display: flex;
+  font-family: system-ui, sans-serif;
+
+}
+
+.header button:hover{
+  box-shadow: 2rem;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+}

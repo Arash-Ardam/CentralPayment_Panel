@@ -1,10 +1,12 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import styles from "./AppShell.module.css";
+import { useAuth } from "react-oidc-context";
 type AppShellProps = {
   children: ReactNode;
 };
 
 const AppShell = ({ children }: AppShellProps) => {
+  const auth = useAuth();
   return (
     <div className={styles.shell}>
       <aside className={styles.sidebar}>
@@ -34,6 +36,14 @@ const AppShell = ({ children }: AppShellProps) => {
         <p>
           نام کاربری: <strong>A.Ardam</strong>
         </p>
+
+        <button
+          onClick={() => {
+            auth.signoutRedirect();
+          }}
+        >
+          خروج
+        </button>
       </header>
       <main className={styles.main}>{children}</main>
     </div>

@@ -1,11 +1,10 @@
 export type Customer = {
     id: string,
-    firstName : string,
-    lastName: string,
-    nationalCode : string,
+    firstName: string | null;
+    lastName: string | null;
+    nationalCode: string | null;
     tenantName: string,
-    isEnable: boolean,
-    connectionString:string
+    isEnable: boolean
 };
 
 export type CreateCustomerRequest = {
