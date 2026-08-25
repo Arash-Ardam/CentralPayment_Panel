@@ -15,19 +15,19 @@ const AppShell = ({ children }: AppShellProps) => {
         <nav>
           <ul>
             <li>
-              <Link to="#">داشبورد</Link>
+              <Link to="/admin">داشبورد</Link>
             </li>
             <li>
-              <Link to="#">مشتری</Link>
+              <Link to="/admin/customers">مشتری</Link>
             </li>
             <li>
-              <Link to="#">باتک ها</Link>
+              <Link to="/admin/banks">بانک ها</Link>
             </li>
             <li>
-              <Link to="#">حساب ها</Link>
+              <Link to="/admin/accounts">حساب ها</Link>
             </li>
             <li>
-              <Link to="#">گزارش ها</Link>
+              <Link to="admin/reports">گزارش ها</Link>
             </li>
           </ul>
         </nav>

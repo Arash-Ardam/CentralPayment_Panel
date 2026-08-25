@@ -1,10 +1,26 @@
 import AppShell from "./components/AppShell/AppShell";
-import { BrowserRouter, Route, Routes } from "react-router";
+import { Route, Routes } from "react-router";
 import RequireAuth from "./pages/RequireAuth";
-import AdminDashborad from "./pages/AdminDashborad";
+import AdminDashboard from "./pages/AdminDashborad";
 import LoginPage from "./pages/LoginPage";
+import CallbackPage from "./pages/CallbackPage";
 const App = () => {
-  return <></>;
+  return (
+    <Routes>
+      <Route path="/" element={<LoginPage />} />
+      <Route path="/callback" element={<CallbackPage />} />
+      <Route
+        path="/admin"
+        element={
+          <RequireAuth role="Admin">
+            <AppShell>
+              <AdminDashboard />
+            </AppShell>
+          </RequireAuth>
+        }
+      />
+    </Routes>
+  );
 };
 
 export default App;

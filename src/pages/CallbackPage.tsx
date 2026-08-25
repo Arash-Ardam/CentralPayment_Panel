@@ -6,7 +6,7 @@ const CallbackPage = () => {
   if (auth.isLoading) return <p>در حال ورود…</p>;
   if (auth.error) return <p>خطا در ورود: {auth.error.message}</p>;
 
-  const roles = (auth.user?.profile as { role?: string[] })?.role ?? [];
+  const roles = (auth.user?.profile.roles as string[]) ?? [];
   return (
     <Navigate to={roles.includes("Admin") ? "/admin" : "/portal"} replace />
   );

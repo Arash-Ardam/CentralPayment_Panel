@@ -3,7 +3,7 @@ import { customerApi } from "../api/endpoints";
 import StatCard from "../components/StatCard/StatCard";
 import styles from "../App.module.css";
 
-const AdminDashborad = () => {
+const AdminDashboard = () => {
   const auth = useAuth();
   return (
     <>
@@ -30,4 +30,4 @@ const AdminDashborad = () => {
   );
 };
 
-export default AdminDashborad;
+export default AdminDashboard;

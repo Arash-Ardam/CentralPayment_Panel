@@ -1,5 +1,6 @@
 import { useAuth } from "react-oidc-context";
 import styles from "../App.module.css";
+import { Navigate } from "react-router";
 
 const LoginPage = () => {
   const auth = useAuth();
@@ -11,6 +12,8 @@ const LoginPage = () => {
         ورود به سامانه
       </button>
     );
+  } else {
+    return <Navigate to={"/admin"} />;
   }
 };
 
