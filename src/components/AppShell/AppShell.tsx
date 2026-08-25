@@ -1,6 +1,7 @@
 import { ReactNode, useEffect, useState } from "react";
 import styles from "./AppShell.module.css";
 import { useAuth } from "react-oidc-context";
+import { Link, Links } from "react-router";
 type AppShellProps = {
   children: ReactNode;
 };
@@ -14,19 +15,19 @@ const AppShell = ({ children }: AppShellProps) => {
         <nav>
           <ul>
             <li>
-              <a href="#">داشبورد</a>
+              <Link to="#">داشبورد</Link>
             </li>
             <li>
-              <a href="#">مشتری</a>
+              <Link to="#">مشتری</Link>
             </li>
             <li>
-              <a href="#">باتک ها</a>
+              <Link to="#">باتک ها</Link>
             </li>
             <li>
-              <a href="#">حساب ها</a>
+              <Link to="#">حساب ها</Link>
             </li>
             <li>
-              <a href="#">گزارش ها</a>
+              <Link to="#">گزارش ها</Link>
             </li>
           </ul>
         </nav>
