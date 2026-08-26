@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useState } from "react";
 import styles from "./AppShell.module.css";
 import { useAuth } from "react-oidc-context";
-import { Link, Links } from "react-router";
+import { Link, Links, NavLink } from "react-router";
 import { setToken } from "../../api/apiClient";
 type AppShellProps = {
   children: ReactNode;
@@ -20,19 +20,54 @@ const AppShell = ({ children }: AppShellProps) => {
         <nav>
           <ul>
             <li>
-              <Link to="/admin">داشبورد</Link>
+              <NavLink
+                to="/admin/"
+                className={({ isActive }) =>
+                  isActive ? styles.navLinkActive : styles.navLink
+                }
+              >
+                داشبورد
+              </NavLink>
             </li>
             <li>
-              <Link to="/admin/customers">مشتری</Link>
+              <NavLink
+                to="/admin/customers/"
+                className={({ isActive }) =>
+                  isActive ? styles.navLinkActive : styles.navLink
+                }
+              >
+                مشتری
+              </NavLink>
             </li>
             <li>
-              <Link to="/admin/banks">بانک ها</Link>
+              <NavLink
+                to="/admin/banks/"
+                className={({ isActive }) =>
+                  isActive ? styles.navLinkActive : styles.navLink
+                }
+              >
+                بانک ها
+              </NavLink>
             </li>
             <li>
-              <Link to="/admin/accounts">حساب ها</Link>
+              <NavLink
+                to="/admin/accounts"
+                className={({ isActive }) =>
+                  isActive ? styles.navLinkActive : styles.navLink
+                }
+              >
+                حساب ها
+              </NavLink>
             </li>
             <li>
-              <Link to="/admin/reports">گزارش ها</Link>
+              <NavLink
+                to="/admin/reports"
+                className={({ isActive }) =>
+                  isActive ? styles.navLinkActive : styles.navLink
+                }
+              >
+                گزارش ها
+              </NavLink>
             </li>
           </ul>
         </nav>

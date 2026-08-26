@@ -4,7 +4,7 @@ import RequireAuth from "./pages/RequireAuth";
 import AdminDashboard from "./pages/AdminDashborad";
 import LoginPage from "./pages/LoginPage";
 import CallbackPage from "./pages/CallbackPage";
-import CustomersPage from "./pages/Customers/CustomersPage";
+import CustomersPage from "./pages/CustomersPage";
 const App = () => {
   return (
     <Routes>

@@ -65,3 +65,96 @@ body {
 
 .buttonDanger { background: transparent; color: var(--color-danger); }
 .buttonDanger:hover { background: var(--color-danger-bg); }
+
+
+.container{
+    display: grid;
+    gap:var(--space-2);
+}
+.card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: var(--space-6);
+}
+
+.table {
+  background-color: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  width: 100%;
+  border-collapse:collapse;
+}
+
+.table th,
+.table td {
+  padding: var(--space-3) var(--space-4);
+  text-align: start;
+  border-block-end: 1px solid var(--color-border);
+}
+
+.table th:last-child,
+.table td:last-child {
+  width: 1%;
+  white-space: nowrap;
+}
+
+.table th {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text);
+  background-color: var(--color-header);
+}
+
+.table td { font-variant-numeric: tabular-nums; }
+
+.table tbody tr:hover {
+  background-color: var(--color-hover-bg);
+}
+
+.table tbody tr:last-child td {
+  border-block-end: none;
+}
+
+.tableWrapper {
+  position: relative;      
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: var(--color-surface);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;                /* کوتاه‌نویسی top/right/bottom/left: 0 */
+  background: rgb(255 255 255 / 0.7);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  color: var(--color-muted);
+  font-weight: 600;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.badge {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.badgeActive   { background: #dcfce7; color: #166534; font-weight: bold; font-size: small; }
+.badgeInactive { background: #f1f5f9; color: var(--color-muted); }
