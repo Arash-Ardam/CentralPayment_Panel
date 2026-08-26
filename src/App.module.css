@@ -20,7 +20,7 @@
 }
 
 .login:hover{
-  box-shadow: 2px;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);
   background-color: rgb(174, 116, 229);
   cursor: pointer;
 }
