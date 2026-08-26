@@ -1,0 +1,36 @@
+#customerContainer{
+    background-color: white;
+    border-radius: 1rem;
+    width: fit-content;
+    height: 500px;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+#customerContainer .error h3{
+    font-weight:bold;
+    font-size: medium;
+}
+
+#customerContainer .error p{
+    font-weight:bold;
+    font-size: small;
+    color: red;
+}
+
+#customerContainer .theader{
+    background-color: rgb(211, 202, 202);
+    border-bottom-style: dashed;
+    border-bottom-color: black;
+    font-weight: bold;
+}
+
+#customerContainer table tbody tr{
+    background-color: white;
+    color: black;
+}
+
+#customerContainer table tbody tr:hover{
+    background-color: rgb(162, 189, 163);
+}

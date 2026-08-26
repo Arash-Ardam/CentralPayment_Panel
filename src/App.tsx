@@ -4,6 +4,7 @@ import RequireAuth from "./pages/RequireAuth";
 import AdminDashboard from "./pages/AdminDashborad";
 import LoginPage from "./pages/LoginPage";
 import CallbackPage from "./pages/CallbackPage";
+import CustomersPage from "./pages/Customers/CustomersPage";
 const App = () => {
   return (
     <Routes>
@@ -15,6 +16,16 @@ const App = () => {
           <RequireAuth role="Admin">
             <AppShell>
               <AdminDashboard />
+            </AppShell>
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/admin/customers"
+        element={
+          <RequireAuth role="Admin">
+            <AppShell>
+              <CustomersPage />
             </AppShell>
           </RequireAuth>
         }

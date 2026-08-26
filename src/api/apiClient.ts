@@ -1,3 +1,5 @@
+import { useAuth } from "react-oidc-context";
+
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 export class ApiError extends Error {
@@ -9,7 +11,6 @@ export class ApiError extends Error {
 
 type RequestOptions = {
   method?: "GET" | "POST" | "PUT" | "DELETE";
-  token?: string | null;
   body?: unknown;
   idempotencyKey?: string;
 };
@@ -18,10 +19,13 @@ export async function apiRequest<T>(
   path: string,
   options: RequestOptions = {}
 ): Promise<T> {
-  const { method = "GET", token , body, idempotencyKey } = options;
 
+  var auth = useAuth();
+
+  const { method = "GET" , body, idempotencyKey } = options;
+  const token = auth.user?.access_token;
   const headers: Record<string, string> = {};
-  if(token !== null) headers["Authorization"] = `bearer ${token}`;
+  if(token !== null || token !== undefined) headers["Authorization"] = `bearer ${token}`;
   if (body !== undefined) headers["Content-Type"] = "application/json";
   if (idempotencyKey) headers["Idempotency-Key"] = idempotencyKey;
 

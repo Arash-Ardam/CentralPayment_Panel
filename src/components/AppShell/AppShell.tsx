@@ -27,7 +27,7 @@ const AppShell = ({ children }: AppShellProps) => {
               <Link to="/admin/accounts">حساب ها</Link>
             </li>
             <li>
-              <Link to="admin/reports">گزارش ها</Link>
+              <Link to="/admin/reports">گزارش ها</Link>
             </li>
           </ul>
         </nav>

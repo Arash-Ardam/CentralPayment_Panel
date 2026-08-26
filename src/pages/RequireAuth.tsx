@@ -15,7 +15,6 @@ const RequireAuth = ({ role, children }: RequireAuthProps) => {
   if (!auth.isAuthenticated) return <Navigate to="/" replace />;
 
   const roles = (auth.user?.profile.roles as string[]) ?? [];
-  console.log(auth.user?.profile.roles);
   if (!roles.includes(role)) return <p>دسترسی ندارید</p>;
 
   return <>{children}</>;
