@@ -13,6 +13,7 @@
   background-color: var(--color-surface);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  overflow: hidden;
   padding: var(--space-6);
   width: 100%;
   border-collapse:collapse;
@@ -25,12 +26,20 @@
   border-block-end: 1px solid var(--color-border);
 }
 
+.table th:last-child,
+.table td:last-child {
+  width: 1%;
+  white-space: nowrap;
+}
+
 .table th {
   font-size: 0.8125rem;
   font-weight: 600;
   color: var(--color-text);
   background-color: var(--color-header);
 }
+
+.table td { font-variant-numeric: tabular-nums; }
 
 .table tbody tr:hover {
   background-color: var(--color-hover-bg);
@@ -47,5 +56,5 @@
   font-size: 0.75rem;
   font-weight: 600;
 }
-.badgeActive   { background: #dcfce7; color: #166534; }
+.badgeActive   { background: #dcfce7; color: #166534; font-weight: bold; font-size: small; }
 .badgeInactive { background: #f1f5f9; color: var(--color-muted); }

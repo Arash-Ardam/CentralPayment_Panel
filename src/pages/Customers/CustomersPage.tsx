@@ -36,7 +36,7 @@ const CustomersPage = () => {
               <td>
                 {customer.firstName} {customer.lastName}
               </td>
-              <td>{customer.nationalCode}</td>
+              <td>{customer.nationalCode ?? "---"}</td>
               <td>{customer.tenantName}</td>
               <td>
                 {customer.isEnable ? (
@@ -46,7 +46,7 @@ const CustomersPage = () => {
                 )}
               </td>
               <td>
-                <button className="button buttonPrimary">جزییات</button>
+                <button className="button buttonGhost">جزییات</button>
               </td>
             </tr>
           ))}
