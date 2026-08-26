@@ -1,9 +1,9 @@
 #customerContainer{
     background-color: white;
     border-radius: 1rem;
-    width: fit-content;
     height: 500px;
     justify-content: center;
+    ;
     align-items: center;
     padding: 1rem;
 }

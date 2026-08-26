@@ -2,12 +2,17 @@ import { ReactNode, useEffect, useState } from "react";
 import styles from "./AppShell.module.css";
 import { useAuth } from "react-oidc-context";
 import { Link, Links } from "react-router";
+import { setToken } from "../../api/apiClient";
 type AppShellProps = {
   children: ReactNode;
 };
 
 const AppShell = ({ children }: AppShellProps) => {
   const auth = useAuth();
+  useEffect(() => {
+    setToken(auth.user?.access_token ?? null);
+  }, [auth.user]);
+
   return (
     <div className={styles.shell}>
       <aside className={styles.sidebar}>

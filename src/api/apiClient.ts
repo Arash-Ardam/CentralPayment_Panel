@@ -1,6 +1,10 @@
-import { useAuth } from "react-oidc-context";
-
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
+
+let token : string | null = null;
+
+export function setToken(value:string | null){
+  token = value;
+}
 
 export class ApiError extends Error {
   constructor(public status: number, message: string) {
@@ -20,10 +24,7 @@ export async function apiRequest<T>(
   options: RequestOptions = {}
 ): Promise<T> {
 
-  var auth = useAuth();
-
   const { method = "GET" , body, idempotencyKey } = options;
-  const token = auth.user?.access_token;
   const headers: Record<string, string> = {};
   if(token !== null || token !== undefined) headers["Authorization"] = `bearer ${token}`;
   if (body !== undefined) headers["Content-Type"] = "application/json";

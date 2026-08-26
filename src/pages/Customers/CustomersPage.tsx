@@ -17,39 +17,40 @@ const CustomersPage = () => {
             <p>{error.message}</p>
           </div>
         )}
-
-        <table className="theader">
-          <thead>
-            <tr>
-              <th> عنوان</th>
-              <th>شناسه ملی</th>
-              <th>نام مستاجر</th>
-              <th>وضعیت</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {data?.map((customer) => (
-              <tr key={customer.id}>
-                <td>
-                  {customer.firstName} {customer.lastName}
-                </td>
-                <td>{customer.nationalCode}</td>
-                <td>{customer.tenantName}</td>
-                <td>
-                  {customer.isEnable ? (
-                    <span>فعال</span>
-                  ) : (
-                    <span>غیر فعال</span>
-                  )}
-                </td>
-                <td>
-                  <button>جزییات</button>
-                </td>
+        {!isPending && !isError && (
+          <table>
+            <thead className="theader">
+              <tr>
+                <th> عنوان</th>
+                <th>شناسه ملی</th>
+                <th>نام مستاجر</th>
+                <th>وضعیت</th>
+                <th></th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {data?.map((customer) => (
+                <tr key={customer.id}>
+                  <td>
+                    {customer.firstName} {customer.lastName}
+                  </td>
+                  <td>{customer.nationalCode}</td>
+                  <td>{customer.tenantName}</td>
+                  <td>
+                    {customer.isEnable ? (
+                      <span>فعال</span>
+                    ) : (
+                      <span>غیر فعال</span>
+                    )}
+                  </td>
+                  <td>
+                    <button>جزییات</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </>
   );
