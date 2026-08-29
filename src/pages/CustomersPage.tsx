@@ -1,11 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import { customerApi } from "../api/endpoints";
+import { useState } from "react";
 
 const CustomersPage = () => {
   const { data, isFetching, isPending, isError, error } = useQuery({
     queryKey: ["customers"],
     queryFn: customerApi.getAll,
   });
+
+  const [search, setSearch] = useState("");
+
   return (
     <div className="container">
       <div>
@@ -15,7 +19,19 @@ const CustomersPage = () => {
         <div className="cardHeader">
           <h3>فیلترها</h3>
         </div>
-        <div className="cardBody">...</div>
+        <div className="cardBody">
+          <div className="tableSearchInput">
+            <i></i>
+            <input
+              type="text"
+              placeholder="جستجو در عنوان..."
+              onChange={(e) => {
+                setSearch(e.target.value);
+                console.log(search);
+              }}
+            />
+          </div>
+        </div>
       </div>
       {isError && (
         <div className="error">

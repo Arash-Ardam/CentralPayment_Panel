@@ -21,7 +21,8 @@ const AppShell = ({ children }: AppShellProps) => {
           <ul>
             <li>
               <NavLink
-                to="/admin/"
+                to="/admin"
+                end
                 className={({ isActive }) =>
                   isActive ? styles.navLinkActive : styles.navLink
                 }
@@ -31,7 +32,7 @@ const AppShell = ({ children }: AppShellProps) => {
             </li>
             <li>
               <NavLink
-                to="/admin/customers/"
+                to="/admin/customers"
                 className={({ isActive }) =>
                   isActive ? styles.navLinkActive : styles.navLink
                 }
@@ -41,7 +42,7 @@ const AppShell = ({ children }: AppShellProps) => {
             </li>
             <li>
               <NavLink
-                to="/admin/banks/"
+                to="/admin/banks"
                 className={({ isActive }) =>
                   isActive ? styles.navLinkActive : styles.navLink
                 }

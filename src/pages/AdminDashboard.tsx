@@ -14,9 +14,7 @@ const AdminDashboard = () => {
         <button
           onClick={async () => {
             try {
-              const data = await customerApi.getAll(
-                auth.user?.access_token ?? "",
-              );
+              const data = await customerApi.getAll();
               console.log("موفق", data);
             } catch (error) {
               console.log("نا موفق", error);

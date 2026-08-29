@@ -1,7 +1,7 @@
 import AppShell from "./components/AppShell/AppShell";
 import { Route, Routes } from "react-router";
 import RequireAuth from "./pages/RequireAuth";
-import AdminDashboard from "./pages/AdminDashborad";
+import AdminDashboard from "./pages/AdminDashboard";
 import LoginPage from "./pages/LoginPage";
 import CallbackPage from "./pages/CallbackPage";
 import CustomersPage from "./pages/CustomersPage";
