@@ -1,7 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import { customerApi } from "../api/endpoints";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
+
+type statusFilter = "all" | "active" | "inActive";
+
+const status_options = [
+  { value: "all", label: "همه" },
+  { value: "active", label: "فعال" },
+  { value: "inActive", label: "غیرفعال" },
+] as const;
 
 const CustomersPage = () => {
   const { data, isFetching, isPending, isError, error } = useQuery({
@@ -10,6 +18,19 @@ const CustomersPage = () => {
   });
 
   const [search, setSearch] = useState("");
+  const [filterState, setFilterState] = useState<statusFilter>("all");
+
+  const filtered = useMemo(() => {
+    if (!search.trim()) return data;
+    return data?.filter((c) => {
+      if (filterState === "active" && !c.isEnable) return undefined;
+      if (filterState === "inActive" && c.isEnable) return undefined;
+      if (!search.trim()) return data;
+      const q = search.trim().toLowerCase();
+
+      return c.tenantName.toLowerCase().includes(q);
+    });
+  }, [data, search]);
 
   return (
     <div className="container">
@@ -29,10 +50,21 @@ const CustomersPage = () => {
               }}
             />
           </div>
-          <div className="tableSearchStatus">
-            <button type="button">همه</button>
-            <button type="button">فعال</button>
-            <button type="button">غیرفعال</button>
+          <div className="segmentGroup">
+            {status_options.map((opt) => (
+              <button
+                key={opt.value}
+                aria-pressed={filterState === opt.value}
+                onClick={() => setFilterState(opt.value)}
+                className={
+                  filterState === opt.value
+                    ? "segment segmentActive"
+                    : "segment"
+                }
+              >
+                {opt.label}
+              </button>
+            ))}
           </div>
         </div>
       </div>
@@ -54,7 +86,7 @@ const CustomersPage = () => {
             </tr>
           </thead>
           <tbody>
-            {data?.map((customer) => (
+            {filtered?.map((customer) => (
               <tr key={customer.id}>
                 <td>
                   {customer.firstName} {customer.lastName}
