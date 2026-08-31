@@ -21,16 +21,15 @@ const CustomersPage = () => {
   const [filterState, setFilterState] = useState<statusFilter>("all");
 
   const filtered = useMemo(() => {
-    if (!search.trim()) return data;
     return data?.filter((c) => {
+      const q = search.trim().toLowerCase();
       if (filterState === "active" && !c.isEnable) return undefined;
       if (filterState === "inActive" && c.isEnable) return undefined;
-      if (!search.trim()) return data;
-      const q = search.trim().toLowerCase();
+      if (!q) return c;
 
       return c.tenantName.toLowerCase().includes(q);
     });
-  }, [data, search]);
+  }, [data, search, filterState]);
 
   return (
     <div className="container">
@@ -68,12 +67,7 @@ const CustomersPage = () => {
           </div>
         </div>
       </div>
-      {isError && (
-        <div className="error">
-          <h3>{error.name}</h3>
-          <p>{error.message}</p>
-        </div>
-      )}
+
       <div className="tableWrapper">
         <table className="table">
           <thead>
@@ -108,12 +102,21 @@ const CustomersPage = () => {
           </tbody>
         </table>
 
-        {isFetching && (
-          <div className="overlay">
-            <span className="spinner" />
-            <span>در حال جست‌وجو…</span>
+        {isFetching ||
+          (isPending && (
+            <div className="overlay">
+              <span className="spinner" />
+              <span>در حال جست‌وجو…</span>
+            </div>
+          ))}
+
+        {isError && (
+          <div className="error">
+            <h3>{error.name}</h3>
+            <p>{error.message}</p>
           </div>
         )}
+        {filtered?.length === 0 && <p className="error">موردی یافت نشد.</p>}
       </div>
     </div>
   );
