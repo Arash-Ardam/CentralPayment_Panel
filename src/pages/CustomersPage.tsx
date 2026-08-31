@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { customerApi } from "../api/endpoints";
 import { useState } from "react";
+import { Search } from "lucide-react";
 
 const CustomersPage = () => {
   const { data, isFetching, isPending, isError, error } = useQuery({
@@ -16,20 +17,22 @@ const CustomersPage = () => {
         <h2>ادمین-مشتریان</h2>
       </div>
       <div className="card">
-        <div className="cardHeader">
-          <h3>فیلترها</h3>
-        </div>
         <div className="cardBody">
           <div className="tableSearchInput">
-            <i></i>
+            <Search size={18} className="searchIcon" />
             <input
               type="text"
               placeholder="جستجو در عنوان..."
+              value={search}
               onChange={(e) => {
                 setSearch(e.target.value);
-                console.log(search);
               }}
             />
+          </div>
+          <div className="tableSearchStatus">
+            <button type="button">همه</button>
+            <button type="button">فعال</button>
+            <button type="button">غیرفعال</button>
           </div>
         </div>
       </div>
