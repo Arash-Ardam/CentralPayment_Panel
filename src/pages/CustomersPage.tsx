@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { customerApi } from "../api/endpoints";
 import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
-import { CustomerForm } from "../forms/CustomerForm";
+import { CustomerForm } from "../forms/Customer/CustomerForm";
 import Dialog, { dialogRef, toggleDialog } from "../components/Dialog/Dialog";
 
 type statusFilter = "all" | "active" | "inActive";
@@ -19,6 +19,7 @@ const CustomersPage = () => {
     queryFn: customerApi.getAll,
   });
 
+  const [openDialog, setOpenDialog] = useState(false);
   const [search, setSearch] = useState("");
   const [filterState, setFilterState] = useState<statusFilter>("all");
 
@@ -39,13 +40,18 @@ const CustomersPage = () => {
         <h2>ادمین-مشتریان</h2>
         <button
           className="button buttonPrimary"
-          onClick={() => toggleDialog(dialogRef)}
+          onClick={() => setOpenDialog(true)}
         >
           ایجاد مشتری جدید
         </button>
 
-        <Dialog>
-          <CustomerForm />
+        <Dialog open={openDialog} onClose={() => setOpenDialog(false)}>
+          {openDialog && (
+            <CustomerForm
+              isOpen={openDialog}
+              onClose={() => setOpenDialog(false)}
+            />
+          )}
         </Dialog>
       </div>
       <div className="card">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Dialog.css";
 export const dialogRef = React.createRef<HTMLDialogElement | null>();
 
@@ -15,10 +15,21 @@ export function toggleDialog(
 }
 
 type DialogProps = {
+  open: boolean;
+  onClose: () => void;
   children: React.ReactNode;
 };
 
-const Dialog = ({ children }: DialogProps) => {
+const Dialog = ({ open, onClose, children }: DialogProps) => {
+  useEffect(() => {
+    const el = dialogRef.current;
+    if (!el) return;
+    if (open && !el.open) el.showModal();
+    if (!open && el.open) el.close();
+  }, [open]);
+
+  if (!open) return null;
+
   return (
     <dialog
       ref={dialogRef}
@@ -34,6 +45,7 @@ const Dialog = ({ children }: DialogProps) => {
             e.clientY <= rect.bottom
           )
         ) {
+          onClose();
           dialogRef.current?.close();
         }
       }}
