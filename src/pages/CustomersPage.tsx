@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { customerApi } from "../api/endpoints";
 import { useMemo, useState } from "react";
-import { Search } from "lucide-react";
+import { Info, Search, Trash2 } from "lucide-react";
 import { CustomerForm } from "../forms/Customer/CustomerForm";
-import Dialog, { dialogRef, toggleDialog } from "../components/Dialog/Dialog";
+import Dialog from "../components/Dialog/Dialog";
+import { TooltipButton } from "../components/TooltipButton/TooltipButton";
 
 type statusFilter = "all" | "active" | "inActive";
 
@@ -113,7 +114,15 @@ const CustomersPage = () => {
                   )}
                 </td>
                 <td>
-                  <button className="button buttonGhost">جزییات</button>
+                  <TooltipButton
+                    hoverContent="مشاهده جزئیات"
+                    className="button buttonGhost"
+                  >
+                    <Info size={15} />
+                  </TooltipButton>
+                  <button className="button buttonDelete">
+                    <Trash2 size={15} />
+                  </button>
                 </td>
               </tr>
             ))}

@@ -1,18 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import "./Dialog.css";
-export const dialogRef = React.createRef<HTMLDialogElement | null>();
-
-export function toggleDialog(
-  dialogRef: React.RefObject<HTMLDialogElement | null>,
-) {
-  if (!dialogRef.current) {
-    return;
-  }
-
-  dialogRef.current.open
-    ? dialogRef.current.close()
-    : dialogRef.current.showModal();
-}
 
 type DialogProps = {
   open: boolean;
@@ -21,8 +8,10 @@ type DialogProps = {
 };
 
 const Dialog = ({ open, onClose, children }: DialogProps) => {
+  const ref = useRef<HTMLDialogElement>(null);
+
   useEffect(() => {
-    const el = dialogRef.current;
+    const el = ref.current;
     if (!el) return;
     if (open && !el.open) el.showModal();
     if (!open && el.open) el.close();
@@ -32,22 +21,10 @@ const Dialog = ({ open, onClose, children }: DialogProps) => {
 
   return (
     <dialog
-      ref={dialogRef}
+      ref={ref}
       className="dialogContainer"
       onClick={(e) => {
-        var rect = dialogRef.current?.getBoundingClientRect();
-        if (
-          rect &&
-          !(
-            e.clientX >= rect.left &&
-            e.clientX <= rect.right &&
-            e.clientY >= rect.top &&
-            e.clientY <= rect.bottom
-          )
-        ) {
-          onClose();
-          dialogRef.current?.close();
-        }
+        if (e.target === e.currentTarget) onClose();
       }}
     >
       {children}

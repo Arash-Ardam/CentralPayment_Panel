@@ -3,14 +3,12 @@ import { CreateCustomerForm, CreateCustomerRequest } from "../../api/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { customerApi } from "../../api/endpoints";
-import Dialog, {
-  dialogRef,
-  toggleDialog,
-} from "../../components/Dialog/Dialog";
+
 import "./CustomerForm.css";
 import { X } from "lucide-react";
 import { useState } from "react";
-import { InforBadge } from "../../components/InfoBadge/InfoBadge";
+import { InfoBadge } from "../../components/InfoBadge/InfoBadge";
+import Dialog from "../../components/Dialog/Dialog";
 
 type CustomerFormProps = {
   isOpen: boolean;
@@ -24,7 +22,6 @@ export const CustomerForm = ({ isOpen, onClose }: CustomerFormProps) => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["customers"] });
       reset();
-      toggleDialog(dialogRef);
     },
   });
 
@@ -45,10 +42,21 @@ export const CustomerForm = ({ isOpen, onClose }: CustomerFormProps) => {
     <div>
       {mutation.isError && isErrorDialogOpen && (
         <Dialog open={isOpen} onClose={() => onClose()}>
-          <InforBadge
+          <InfoBadge
             isSuccess={false}
             message={mutation.error.message}
             onDismiss={() => setIsErrorDialogOpen(false)}
+            onClose={() => onClose()}
+          />
+        </Dialog>
+      )}
+      {mutation.isSuccess && isErrorDialogOpen && (
+        <Dialog open={isOpen} onClose={() => onClose()}>
+          <InfoBadge
+            isSuccess={true}
+            message="مشتری با موفقیت اضافه شد."
+            onDismiss={() => setIsErrorDialogOpen(false)}
+            onClose={() => onClose()}
           />
         </Dialog>
       )}
@@ -61,7 +69,6 @@ export const CustomerForm = ({ isOpen, onClose }: CustomerFormProps) => {
           <button
             type="button"
             onClick={() => {
-              toggleDialog(dialogRef);
               onClose();
               reset();
             }}
@@ -106,7 +113,6 @@ export const CustomerForm = ({ isOpen, onClose }: CustomerFormProps) => {
           <button
             type="button"
             onClick={() => {
-              toggleDialog(dialogRef);
               onClose();
               reset();
             }}

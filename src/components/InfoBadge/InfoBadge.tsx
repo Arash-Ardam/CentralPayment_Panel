@@ -5,12 +5,14 @@ type ErrorBadgeProps = {
   isSuccess: boolean;
   message: string;
   onDismiss: () => void;
+  onClose?: () => void;
 };
 
-export const InforBadge = ({
+export const InfoBadge = ({
   isSuccess,
   message,
   onDismiss,
+  onClose,
 }: ErrorBadgeProps) => {
   return (
     <div className="infoBadge">
@@ -20,7 +22,17 @@ export const InforBadge = ({
         <XCircle size={48} className="infoBadgeIconError" />
       )}
       <p>{message}</p>
-      <button type="button" onClick={() => onDismiss()}>
+      <button
+        type="button"
+        onClick={() => {
+          if (!isSuccess) {
+            onDismiss();
+          } else {
+            onDismiss();
+            onClose?.();
+          }
+        }}
+      >
         بستن
       </button>
     </div>
