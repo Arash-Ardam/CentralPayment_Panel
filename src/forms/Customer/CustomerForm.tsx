@@ -97,7 +97,7 @@ export const CustomerForm = ({ isOpen, onClose }: CustomerFormProps) => {
                 ? "submitButton disabled"
                 : "submitButton"
             }
-            disabled={mutation.isPending}
+            disabled={!canSubmit || mutation.isPending}
             onClick={() => setIsErrorDialogOpen(true)}
           >
             {mutation.isPending ? "در حال ثبت…" : "ثبت"}

@@ -1,4 +1,6 @@
 import "./infoBadge.css";
+import { CheckCircle2, XCircle } from "lucide-react";
+
 type ErrorBadgeProps = {
   isSuccess: boolean;
   message: string;
@@ -11,14 +13,12 @@ export const InforBadge = ({
   onDismiss,
 }: ErrorBadgeProps) => {
   return (
-    <div className="badge">
-      <img
-        src={
-          isSuccess
-            ? "../../assets/images/successBadge.png"
-            : "../../assets/images/failedBadge.png"
-        }
-      />
+    <div className="infoBadge">
+      {isSuccess ? (
+        <CheckCircle2 size={48} className="infoBadgeIconSuccess" />
+      ) : (
+        <XCircle size={48} className="infoBadgeIconError" />
+      )}
       <p>{message}</p>
       <button type="button" onClick={() => onDismiss()}>
         بستن
