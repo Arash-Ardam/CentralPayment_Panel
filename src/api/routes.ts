@@ -1,3 +1,4 @@
 export const customerRoutes = {
-    getAll : "/api/customers/getAll"
+    getAll : "/api/customers/getAll",
+    create : "/api/customers/create"
 }

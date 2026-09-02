@@ -1,0 +1,12 @@
+.dialogContainer{
+   background-color: var(--color-surface);
+   border-radius: var(--radius);
+   box-shadow: var(--shadow);
+   padding: none; 
+   border-color: var(--color-surface);   
+}
+
+dialog::backdrop {
+  backdrop-filter: blur(2px);
+  background-color: rgba(0, 0, 0, 0.2); /* Optional: darkens the blur slightly */
+}

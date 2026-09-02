@@ -1,3 +1,5 @@
+import {z} from "zod";
+
 export type Customer = {
     id: string,
     firstName: string | null;
@@ -7,7 +9,12 @@ export type Customer = {
     isEnable: boolean
 };
 
-export type CreateCustomerRequest = {
-  tenantName: string;
-  connectionString: string;
-};
+export const CreateCustomerRequest = z.object({
+  tenantName: z.string()
+               .min(3,"نام مستاجر حداقل 3 کاراکتر باید باشد")
+               .max(50,"نام مستاجر حداکثر 50 کاراکتر است"),
+  connectionString: z.string().nullable()
+});
+
+
+export type CreateCustomerForm = z.infer<typeof CreateCustomerRequest>;

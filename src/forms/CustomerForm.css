@@ -1,0 +1,95 @@
+.customerForm {
+  display: grid;
+  gap: 1rem;
+  padding: 0.4rem;
+  background-color: none;
+  width: 600px;
+  height: auto;
+}
+
+.customerForm .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-1);
+}
+.customerForm .header p {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--color-text);
+}
+
+.customerForm .header button {
+    background-color: transparent;
+    border-radius: 0.5rem;
+    border-color: transparent;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+}
+
+.customerForm .header button:hover {
+    color: var(--color-danger);
+    background-color: var(--color-danger-bg);
+}
+
+
+.customerForm .body {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.customerForm .formGroup {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.customerForm .formGroup label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.customerForm .formGroup input, .customerForm .formGroup textarea {
+  padding: 0.5rem;
+  border-radius: var(--radius-sm);
+  border-color: var(--color-bg);
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: inherit;
+  color: var(--color-text);
+  border-style: solid;
+  background-color: var(--color-bg);
+}
+.customerForm .formGroup textarea{
+    direction: ltr;
+    text-align: left;
+    resize: vertical;
+}
+
+.customerForm .formGroup input:focus-visible , .customerForm .formGroup textarea:focus-visible {
+  outline: none;
+  border-color: var(--color-bg);
+  box-shadow: 0 0 10px 2px var(--color-muted);
+}
+
+
+.customerForm .footer {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.customerForm .footer .submitButton {
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  width: 150px;
+  background-color: aqua;
+}

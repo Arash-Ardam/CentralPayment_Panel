@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import { customerApi } from "../api/endpoints";
 import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
+import { CustomerForm } from "../forms/CustomerForm";
+import Dialog, { dialogRef, toggleDialog } from "../components/Dialog/Dialog";
 
 type statusFilter = "all" | "active" | "inActive";
 
@@ -21,8 +23,8 @@ const CustomersPage = () => {
   const [filterState, setFilterState] = useState<statusFilter>("all");
 
   const filtered = useMemo(() => {
+    const q = search.trim().toLowerCase();
     return data?.filter((c) => {
-      const q = search.trim().toLowerCase();
       if (filterState === "active" && !c.isEnable) return undefined;
       if (filterState === "inActive" && c.isEnable) return undefined;
       if (!q) return c;
@@ -33,8 +35,18 @@ const CustomersPage = () => {
 
   return (
     <div className="container">
-      <div>
+      <div className="title">
         <h2>ادمین-مشتریان</h2>
+        <button
+          className="button buttonPrimary"
+          onClick={() => toggleDialog(dialogRef)}
+        >
+          ایجاد مشتری جدید
+        </button>
+
+        <Dialog>
+          <CustomerForm />
+        </Dialog>
       </div>
       <div className="card">
         <div className="cardBody">
