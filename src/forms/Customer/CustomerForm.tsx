@@ -4,12 +4,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { customerApi } from "../../api/endpoints";
 
-import "./CustomerForm.css";
 import { X } from "lucide-react";
 import { useState } from "react";
 import { InfoBadge } from "../../components/InfoBadge/InfoBadge";
 import Dialog from "../../components/Dialog/Dialog";
-
+import "../../assets/css/form.css";
 type CustomerFormProps = {
   isOpen: boolean;
   onClose: () => void;
@@ -61,10 +60,10 @@ export const CustomerForm = ({ isOpen, onClose }: CustomerFormProps) => {
         </Dialog>
       )}
       <form
-        className="customerForm"
+        className="form"
         onSubmit={handleSubmit((data) => mutation.mutate(data))}
       >
-        <div className="customerForm header">
+        <div className="form header flex">
           <p>افزودن مشتری جدید</p>
           <button
             type="button"
@@ -76,8 +75,8 @@ export const CustomerForm = ({ isOpen, onClose }: CustomerFormProps) => {
             <X size={16} />
           </button>
         </div>
-        <div className="customerForm body">
-          <div className="customerForm formGroup">
+        <div className="form body">
+          <div className="formGroup">
             <div>
               <label htmlFor="tenantName">نام مشتری</label> <span>*</span>
             </div>
@@ -88,7 +87,7 @@ export const CustomerForm = ({ isOpen, onClose }: CustomerFormProps) => {
             />
             {errors.tenantName && <span>{errors.tenantName.message}</span>}
           </div>
-          <div className="customerForm formGroup">
+          <div className="formGroup">
             <label htmlFor="connectionString">رشته اتصال</label>
             <textarea id="connectionString" {...register("connectionString")} />
             {errors.connectionString && (
@@ -96,7 +95,7 @@ export const CustomerForm = ({ isOpen, onClose }: CustomerFormProps) => {
             )}
           </div>
         </div>
-        <div className="customerForm footer">
+        <div className="form footer">
           <button
             type="submit"
             className={

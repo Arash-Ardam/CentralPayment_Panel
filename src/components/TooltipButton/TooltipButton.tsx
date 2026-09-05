@@ -1,30 +1,30 @@
-import { useState } from "react";
+import type { ReactNode } from "react";
+import "./TooltipButton.css";
 
-type tooltipButtonProps = {
+type TooltipButtonProps = {
   className?: string;
-  hoverContent?: string;
+  label: string;
   onClick?: () => void;
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export const TooltipButton = ({
   className,
-  hoverContent,
+  label,
   onClick,
   children,
-}: tooltipButtonProps) => {
-  const [isHovered, setIsHovered] = useState(false);
-  return (
-    <div className="tooltip">
-      <button
-        className={className}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        onClick={onClick}
-      >
-        {children}
-      </button>
-      {isHovered && <div className="tooltipHover">{hoverContent}</div>}
-    </div>
-  );
-};
+}: TooltipButtonProps) => (
+  <span className="tooltip">
+    <button
+      type="button"
+      className={className}
+      onClick={onClick}
+      aria-label={label}
+    >
+      {children}
+    </button>
+    <span className="tooltipHover" role="tooltip">
+      {label}
+    </span>
+  </span>
+);

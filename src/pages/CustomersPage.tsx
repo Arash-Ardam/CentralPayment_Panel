@@ -1,11 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { customerApi } from "../api/endpoints";
 import { useMemo, useState } from "react";
-import { Info, Search, Trash2 } from "lucide-react";
+import { Info, Search, Settings2 } from "lucide-react";
 import { CustomerForm } from "../forms/Customer/CustomerForm";
 import Dialog from "../components/Dialog/Dialog";
 import { TooltipButton } from "../components/TooltipButton/TooltipButton";
-
+import "../assets/css/table.css";
+import { DetailForm } from "../forms/Customer/detailForm";
 type statusFilter = "all" | "active" | "inActive";
 
 const status_options = [
@@ -21,6 +22,8 @@ const CustomersPage = () => {
   });
 
   const [openDialog, setOpenDialog] = useState(false);
+  const [openDetailDialog, setOpenDetailDialog] = useState(false);
+
   const [search, setSearch] = useState("");
   const [filterState, setFilterState] = useState<statusFilter>("all");
 
@@ -115,14 +118,24 @@ const CustomersPage = () => {
                 </td>
                 <td>
                   <TooltipButton
-                    hoverContent="مشاهده جزئیات"
+                    label="مدیریت"
                     className="button buttonGhost"
+                    onClick={() => setOpenDetailDialog(true)}
                   >
-                    <Info size={15} />
+                    <Settings2 size={15} />
                   </TooltipButton>
-                  <button className="button buttonDelete">
-                    <Trash2 size={15} />
-                  </button>
+
+                  <Dialog
+                    open={openDetailDialog}
+                    onClose={() => setOpenDetailDialog(false)}
+                  >
+                    <DetailForm
+                      isOpen={openDetailDialog}
+                      onClose={() => setOpenDetailDialog(false)}
+                      id={customer.id}
+                      title={customer.tenantName}
+                    />
+                  </Dialog>
                 </td>
               </tr>
             ))}
